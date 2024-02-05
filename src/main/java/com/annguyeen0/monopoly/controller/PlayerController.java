@@ -25,7 +25,7 @@ public class PlayerController {
     @GetMapping("players")
     public List<PlayerModel> getAll(){
 
-        return playerService.getAllPlayer();
+        return playerService.getAllPlayer().stream().filter(player -> !player.getName().equals("bank")).toList();
     }
 
     @GetMapping("players/{id}")
