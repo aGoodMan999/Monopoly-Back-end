@@ -21,6 +21,11 @@ public class GameServiceImpl implements GameService{
     }
 
     @Override
+    public GameModel getGameById(Integer id) {
+        return this.gameRepository.findById(id).orElse(null);
+    }
+
+    @Override
     public GameModel createNewGame(GameModel data) {
         return gameRepository.save(data);
     }

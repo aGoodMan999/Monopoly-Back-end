@@ -8,6 +8,8 @@ import com.annguyeen0.monopoly.request_model.NewGameRequest;
 import com.annguyeen0.monopoly.respone_model.NewGameResponse;
 import com.annguyeen0.monopoly.service.GameService;
 import com.annguyeen0.monopoly.service.ParticipationService;
+import org.hibernate.annotations.Parameter;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,18 +32,10 @@ public class GameController {
         return this.gameService.getAllGame();
     }
 
-//    @PostMapping("games")
-//    public GameModel createNewGame(@RequestBody GameModel data) {
-//        GameStatusModel status = GameStatusModel.builder().id(1).build();
-//        GameModel finalData = GameModel.builder()
-//                .gameStatus(status)
-//                .initTotal(data.getInitTotal())
-//                .createDate(new Date())
-//                .lastModified(new Date())
-//                .build();
-//        return gameService.createNewGame(finalData);
-//    }
-
+    @GetMapping("games/{id}")
+    public GameModel getGameById(@PathVariable("id") Integer id){
+        return this.gameService.getGameById(id);
+    }
     @PostMapping("games")
     public GameModel createNewGame(@RequestBody NewGameRequest data) {
         GameStatusModel status = GameStatusModel.builder().id(1).build();
@@ -55,7 +49,6 @@ public class GameController {
         for(Integer item : data.getListPlayerId()){
             participationService.saveParticipation(new Participation(res.getId(), item));
         }
-
         return res;
     }
 }

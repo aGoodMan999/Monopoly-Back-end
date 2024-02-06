@@ -7,5 +7,6 @@ import java.util.List;
 public interface GameService {
     List<GameModel> getAllGame();
 
+    GameModel getGameById(Integer id);
     GameModel createNewGame(GameModel data);
 }

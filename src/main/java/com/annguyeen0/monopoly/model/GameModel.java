@@ -30,7 +30,7 @@ public class GameModel {
     @JsonManagedReference
     private WinByModel win_by;
 
-    @OneToOne( cascade = CascadeType.MERGE)
+    @ManyToOne( cascade = CascadeType.MERGE)
     @JoinColumn(name = "status_id", referencedColumnName = "id")
     @JsonManagedReference
     private GameStatusModel gameStatus;

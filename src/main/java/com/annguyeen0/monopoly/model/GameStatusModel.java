@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,7 +23,7 @@ public class GameStatusModel {
     @Column(name = "status")
     private String status;
 
-    @OneToOne(mappedBy = "gameStatus")
+    @OneToMany(mappedBy = "gameStatus")
     @JsonBackReference
-    private GameModel game;
+    private List<GameModel> game;
 }
