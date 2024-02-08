@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,7 +25,7 @@ public class WinByModel {
     @Column(name = "description")
     private String description;
 
-    @OneToOne(mappedBy = "win_by")
+    @OneToMany(mappedBy = "win_by")
     @JsonBackReference
-    private GameModel game;
+    private Set<GameModel> game;
 }

@@ -21,7 +21,24 @@ public class ParticipationServiceImpl implements ParticipationService{
     }
 
     @Override
+    public Participation getParticipationById(Integer id) {
+        return participationRepository.findById(id).get();
+    }
+
+    @Override
+    public Participation getParticipationByPlayerAndGame(Integer gameId, Integer playerId) {
+        Participation p = this.participationRepository.getParticipationByGameIdAndGameId(gameId, playerId).get(0);
+        return p;
+    }
+
+
+    @Override
     public Participation saveParticipation(Participation participation) {
+        return this.participationRepository.save(participation);
+    }
+
+    @Override
+    public Participation updateParticipation(Participation participation) {
         return this.participationRepository.save(participation);
     }
 

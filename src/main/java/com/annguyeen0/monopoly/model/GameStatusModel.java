@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -25,5 +26,5 @@ public class GameStatusModel {
 
     @OneToMany(mappedBy = "gameStatus")
     @JsonBackReference
-    private List<GameModel> game;
+    private Set<GameModel> game;
 }

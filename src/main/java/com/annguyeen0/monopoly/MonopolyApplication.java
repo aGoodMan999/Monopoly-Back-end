@@ -10,4 +10,5 @@ public class MonopolyApplication {
 		SpringApplication.run(MonopolyApplication.class, args);
 	}
 
+
 }

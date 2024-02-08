@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -25,7 +26,7 @@ public class GameModel {
     @Column(name = "init_total")
     private Integer initTotal;
 
-    @OneToOne( cascade = CascadeType.ALL)
+    @ManyToOne( cascade = CascadeType.ALL)
     @JoinColumn(name = "win_by_id", referencedColumnName = "id")
     @JsonManagedReference
     private WinByModel win_by;
@@ -34,4 +35,12 @@ public class GameModel {
     @JoinColumn(name = "status_id", referencedColumnName = "id")
     @JsonManagedReference
     private GameStatusModel gameStatus;
+
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "participation",
+            joinColumns = @JoinColumn(name = "game_id"),
+            inverseJoinColumns = @JoinColumn(name = "player_id")
+    )
+    private Set<PlayerModel> players;
 }
