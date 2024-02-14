@@ -5,11 +5,19 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Set;
 
 public interface ParticipationRepository extends JpaRepository<Participation, Integer> {
-
     @Query(
             value = "SELECT * FROM participation p WHERE p.game_id = ?1 and p.player_id = ?2",
             nativeQuery = true)
     List<Participation> getParticipationByGameIdAndGameId(Integer gameId, Integer playerId);
+
+    @Query(
+            value = "SELECT * FROM participation p WHERE p.game_id = ?1",
+            nativeQuery = true)
+    Set<Participation> getParticipationByGameId(Integer gameId);
+
+
+
 }

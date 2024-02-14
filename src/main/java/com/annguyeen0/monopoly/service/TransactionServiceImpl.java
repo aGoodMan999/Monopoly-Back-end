@@ -21,4 +21,14 @@ public class TransactionServiceImpl implements TransactionService{
     public List<TransactionModel> getAllTransaction() {
         return transactionRepository.findAll();
     }
+
+    @Override
+    public List<TransactionModel> getTransactionByGameId(Integer id) {
+        return this.transactionRepository.ngetTransactionByGameId(id);
+    }
+
+    @Override
+    public TransactionModel save(TransactionModel data) {
+        return this.transactionRepository.save(data);
+    }
 }

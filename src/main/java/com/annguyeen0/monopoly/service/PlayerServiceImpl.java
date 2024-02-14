@@ -4,9 +4,7 @@ import com.annguyeen0.monopoly.model.PlayerModel;
 import com.annguyeen0.monopoly.repository.PlayerRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 
 @Service
@@ -36,5 +34,15 @@ public class PlayerServiceImpl implements PlayerService{
                 .createDate(new Date())
                 .build();
         return playerRepository.save(finalData);
+    }
+
+    @Override
+    public Set<PlayerModel> getPlayerByListId(Set<Integer> listId) {
+        Set<PlayerModel> res = new HashSet<>();
+        for (Integer id:
+             listId) {
+            res.add(this.playerRepository.findById(id).orElse(null));
+        }
+        return res;
     }
 }

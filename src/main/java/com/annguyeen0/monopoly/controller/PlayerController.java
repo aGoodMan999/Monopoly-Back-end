@@ -10,7 +10,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -24,10 +26,12 @@ public class PlayerController {
 
     @GetMapping("players")
     public List<PlayerModel> getAll(){
-
         return playerService.getAllPlayer().stream().filter(player -> !player.getName().equals("bank")).toList();
     }
-
+    @GetMapping("players/get-list-player")
+    Set<PlayerModel> getPlayersByListId(@RequestBody Set<Integer> listId){
+        return this.playerService.getPlayerByListId(listId);
+    }
     @GetMapping("players/{id}")
     public PlayerModel getById(@PathVariable int id){
         return playerService.getPlayerById(id);

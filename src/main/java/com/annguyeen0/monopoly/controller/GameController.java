@@ -59,6 +59,7 @@ public class GameController {
 //        }
         //Lấy tất cả player bằng id từ request
         Set<PlayerModel> listPlayer = new HashSet<>();
+        listPlayer.add(this.playerService.getPlayerById(1));
         for(Integer id : data.getListPlayerId()){
             listPlayer.add(this.playerService.getPlayerById(id));
         }

@@ -5,6 +5,7 @@ import com.annguyeen0.monopoly.repository.ParticipationRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ParticipationServiceImpl implements ParticipationService{
@@ -29,6 +30,11 @@ public class ParticipationServiceImpl implements ParticipationService{
     public Participation getParticipationByPlayerAndGame(Integer gameId, Integer playerId) {
         Participation p = this.participationRepository.getParticipationByGameIdAndGameId(gameId, playerId).get(0);
         return p;
+    }
+
+    @Override
+    public Set<Participation> getParticipationByGame(Integer gameId) {
+        return this.participationRepository.getParticipationByGameId(gameId);
     }
 
 

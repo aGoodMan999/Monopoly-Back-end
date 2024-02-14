@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface TransactionService {
     List<TransactionModel> getAllTransaction();
+    List<TransactionModel> getTransactionByGameId(Integer id);
+    TransactionModel save(TransactionModel data);
+
+
 }

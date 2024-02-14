@@ -2,11 +2,14 @@ package com.annguyeen0.monopoly.model;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.Set;
 
 @Getter
 @Setter
@@ -26,7 +29,8 @@ public class TransactionTypeModel {
     @Column(name = "cost")
     private Integer cost;
 
-    @OneToOne(mappedBy = "transactionType")
+    @OneToMany(mappedBy = "transactionType")
     @JsonBackReference
-    private TransactionModel transaction;
+    @JsonIgnore
+    private Set<TransactionModel> transaction;
 }
