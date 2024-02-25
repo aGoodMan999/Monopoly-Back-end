@@ -10,5 +10,6 @@ public interface TransactionService {
     List<TransactionModel> getTransactionByGameId(Integer id);
     TransactionModel save(TransactionModel data);
 
+    TransactionModel deleteById(Integer id);
 
 }

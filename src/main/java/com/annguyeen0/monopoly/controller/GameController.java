@@ -42,6 +42,7 @@ public class GameController {
 
     @GetMapping("games/{id}")
     public GameModel getGameById(@PathVariable("id") Integer id){
+        System.out.println(this.gameService.getGameById(id).getLastModified());
         return this.gameService.getGameById(id);
     }
     @PostMapping("games")

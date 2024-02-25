@@ -35,7 +35,7 @@ public class ParticipationController {
                     .id(item.getId())
                     .gameId(item.getGameId())
                     .balance(item.getBalance())
-                    .player(this.playerService.getPlayerById(item.getPlayerId()))
+                    .player(this.playerService.getPlayerById(item.getPlayerId() ))
                     .build()
             );
         });

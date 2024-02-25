@@ -27,7 +27,7 @@ public class TransactionModel {
     @Column(name = "time")
     private Date time;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "transaction_type_id", referencedColumnName = "id")
     @JsonManagedReference
     private TransactionTypeModel transactionType;

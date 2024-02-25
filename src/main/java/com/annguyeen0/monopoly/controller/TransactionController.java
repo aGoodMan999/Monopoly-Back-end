@@ -17,20 +17,15 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class TransactionController {
-
     private TransactionService transactionService;
     private TransactionTypeService transactionTypeService;
     private ParticipationService participationService;
-
-
 
     public TransactionController(TransactionService transactionService, TransactionTypeService transactionTypeService, ParticipationService participationService) {
         this.transactionService = transactionService;
         this.transactionTypeService = transactionTypeService;
         this.participationService = participationService;
     }
-
-
 
     @GetMapping("transactions")
     public List<TransactionModel> getAllTransaction(){
@@ -45,6 +40,11 @@ public class TransactionController {
     @GetMapping("transactions/get-by-game-id")
     public List<TransactionModel> getTransactionByGameId(@RequestParam("gameId") Integer gameId){
         return this.transactionService.getTransactionByGameId(gameId);
+    }
+
+    @DeleteMapping("transactions/{id}")
+    public TransactionModel deleteTransaction(@PathVariable Integer id) {
+        return this.transactionService.deleteById(id);
     }
 
     @PostMapping("transactions")
